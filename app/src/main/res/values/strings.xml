@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name" translatable="false">Weather forecaster</string>
+    <string name="yesterday" translatable="false">Yesterday</string>
+    <string name="tomorrow" translatable="false">Tomorrow</string>
+    <string name="weatherpicture" translatable="false">weather picture</string>
+    <string name="town" translatable="false">Moscow</string>
+    <string name="state" translatable="false">Storm</string>
+    <string name="direction">direction</string>
+    <string name="picturepoint">picturepoint</string>
+    <string name="WindLabel">Wind:</string>
+</resources>

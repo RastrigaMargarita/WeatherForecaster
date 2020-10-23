@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Предсказатель погоды</string>
+    <string name="yesterday" translatable="false">Вчера</string>
+    <string name="tomorrow" translatable="false">Завтра</string>
+    <string name="weatherpicture" translatable="false">Картинка погоды</string>
+    <string name="town" translatable="false">Москва</string>
+    <string name="state" translatable="false">Гроза</string>
+    <string name="direction">Направление ветра</string>
+    <string name="picturepoint">Навигационная точка</string>
+    <string name="WindLabel">Ветер:</string>
+</resources>
