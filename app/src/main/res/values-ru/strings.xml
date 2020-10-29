@@ -4,9 +4,97 @@
     <string name="yesterday" translatable="false">Вчера</string>
     <string name="tomorrow" translatable="false">Завтра</string>
     <string name="weatherpicture" translatable="false">Картинка погоды</string>
-    <string name="town" translatable="false">Москва</string>
+    <string name="town" translatable="false">Россия Москва</string>
     <string name="state" translatable="false">Гроза</string>
     <string name="direction">Направление ветра</string>
     <string name="picturepoint">Навигационная точка</string>
     <string name="WindLabel">Ветер:</string>
+    <string name="windmes">м/с</string>
+    <string name="search">поиск</string>
+    <string name="search_town">поиск  города</string>
+    <string name="notFound">Город не найден</string>
+
+    <string-array name="towns">
+        <item>Ангола  Луанда</item>
+        <item>Аргентина Буэнос-Айрес</item>
+        <item>Бангладеш	Дакка</item>
+        <item>Бразилия	Сан-Паулу</item>
+        <item>Бразилия	Рио-де-Жанейро</item>
+        <item>Бразилия	Белу-Оризонти</item>
+        <item>Великобритания	Лондон</item>
+        <item>Вьетнам	Хошимин</item>
+        <item>ДР Конго	Киншаса</item>
+        <item>Египет	Каир</item>
+        <item>Египет	Александрия</item>
+        <item>Индия	Дели</item>
+        <item>Индия	Мумбаи</item>
+        <item>Индия	Калькутта</item>
+        <item>Индия	Бангалор</item>
+        <item>Индия	Ченнай</item>
+        <item>Индия	Хайдарабад</item>
+        <item>Индия	Ахмедабад</item>
+        <item>Индия	Сурат</item>
+        <item>Индонезия	Джакарта</item>
+        <item>Ирак	Багдад</item>
+        <item>Иран	Тегеран</item>
+        <item>Испания	Мадрид</item>
+        <item>Испания	Барселона</item>
+        <item>Канада	Торонто</item>
+        <item>Китай	Шанхай</item>
+        <item>Китай	Пекин</item>
+        <item>Китай	Чунцин</item>
+        <item>Китай	Тяньцзинь</item>
+        <item>Китай	Гуанчжоу</item>
+        <item>Китай	Шэньчжэнь</item>
+        <item>Китай	Чэнду</item>
+        <item>Китай	Нанкин</item>
+        <item>Китай	Ухань</item>
+        <item>Китай	Сиань</item>
+        <item>Китай	Гонконг</item>
+        <item>Китай	Дунгуань</item>
+        <item>Китай	Ханчжоу</item>
+        <item>Китай	Фошань</item>
+        <item>Китай	Шэньян</item>
+        <item>Китай	Сучжоу</item>
+        <item>Китай	Харбин</item>
+        <item>Китай	Циндао</item>
+        <item>Китай	Далянь</item>
+        <item>Китай	Цзинань</item>
+        <item>Колумбия	Богота</item>
+        <item>Малайзия	Куала Лумпур</item>
+        <item>Мексика	Мехико</item>
+        <item>Мексика	Гвадалахара</item>
+        <item>Мьянма	Янгон</item>
+        <item>Нигерия	Лагос</item>
+        <item>Пакистан	Карачи</item>
+        <item>Пакистан	Лахор</item>
+        <item>Перу	Лима</item>
+        <item>Россия	Москва</item>
+        <item>Россия	Санкт-Петербург</item>
+        <item>Саудов.Аравия	Эр-Рияд</item>
+        <item>Сингапур	Сингапур</item>
+        <item>Судан	Хартум</item>
+        <item>США	Нью-Йорк</item>
+        <item>США	Лос-Анджелес</item>
+        <item>США	Чикаго</item>
+        <item>США	Хьюстон</item>
+        <item>США	Даллас</item>
+        <item>США	Майами</item>
+        <item>США	Филадельфия</item>
+        <item>США	Атланта</item>
+        <item>США	Вашингтон</item>
+        <item>Таиланд	Бангкок</item>
+        <item>Танзания	Дар-эс-Салам</item>
+        <item>Турция	Стамбул</item>
+        <item>Филиппины	Манила</item>
+        <item>Франция	Париж</item>
+        <item>Чили	Сантьяго</item>
+        <item>Южная Африка	Йоханнесбург</item>
+        <item>Южная Корея	Сеул</item>
+        <item>Япония	Токио</item>
+        <item>Япония	Осака</item>
+        <item>Япония	Нагоя</item>
+        <item>Япония	Фукуока</item>
+    </string-array>
+
 </resources>
