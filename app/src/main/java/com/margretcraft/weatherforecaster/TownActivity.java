@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ public class TownActivity extends AppCompatActivity {
     private ListView listViewTown;
     private TextView textViewTown;
     private ImageButton buttonSearch;
+    private Button buttonback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,8 @@ public class TownActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                ApplicationClass.getInstance().setTown(listTown[position]);
                 Intent answer = new Intent();
-                answer.putExtra("town", listTown[position]);
                 setResult(RESULT_OK, answer);
                 finish();
             }
@@ -46,14 +48,25 @@ public class TownActivity extends AppCompatActivity {
                 String searchingTown = textViewTown.getText().toString().trim().toLowerCase();
                 listViewTown.setSelection(0);
                 for (int i = 0; i < listTown.length; i++) {
-
+                    boolean findtown = false;
                     if (listTown[i].toLowerCase().contains(searchingTown)) {
                         listViewTown.smoothScrollToPosition(i, 0);
                         listViewTown.setSelection(i);
+                        findtown = true;
                         return;
                     }
-                    showToast();
+                    if (!findtown) {
+                        showToast();
+                    }
                 }
+            }
+        });
+
+        buttonback = findViewById(R.id.buttonBack2);
+        buttonback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

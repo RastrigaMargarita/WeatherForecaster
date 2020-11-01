@@ -8,11 +8,18 @@
     <string name="direction">direction</string>
     <string name="picturepoint">picturepoint</string>
     <string name="WindLabel">Wind:</string>
-    <string name="windmes">m/s</string>
-    <string name="tempmes" translatable="false">°C</string>
-    <string name="search">поиск</string>
+    <string name="windmes1">m/s</string>
+    <string name="windmes2">km/h</string>
+    <string name="tempmes1" translatable="false">°C</string>
+    <string name="tempmes2" translatable="false">K</string>
+    <string name="search">type town</string>
     <string name="search_town">search town</string>
     <string name="notFound">Town is not found</string>
+    <string name="config">configuration</string>
+    <string name="castwind">Wind unit</string>
+    <string name="casttemp">Temperature unit</string>
+    <string name="selectConfiguration">Select configuration</string>
+
     <string-array name="towns">
         <item>Angola Luanda </item>
         <item>Argentina Buenos Aires</item>
@@ -95,4 +102,15 @@
         <item>Japan Nagoya </item>
         <item>Japan Fukuoka </item>
     </string-array>
+
+    <string name="onCreate" translatable="false">Создание активити</string>
+    <string name="onStart" translatable="false">Запуск активити</string>
+    <string name="onPause" translatable="false">Пауза активити</string>
+    <string name="onResume" translatable="false">Возобновление активити</string>
+    <string name="onStop" translatable="false">Остановка активити</string>
+    <string name="onRestart" translatable="false">Повторный запуск активити</string>
+    <string name="onDestroy" translatable="false">Разрушение активити</string>
+    <string name="onRestoreInstanceState" translatable="false">Восстановление данных</string>
+    <string name="onSaveInstanceState" translatable="false">Запись данных</string>
+    <string name="back">back</string>
 </resources>

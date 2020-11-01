@@ -9,10 +9,16 @@
     <string name="direction">Направление ветра</string>
     <string name="picturepoint">Навигационная точка</string>
     <string name="WindLabel">Ветер:</string>
-    <string name="windmes">м/с</string>
+    <string name="windmes1">м/с</string>
+    <string name="windmes2">км/ч</string>
     <string name="search">поиск</string>
     <string name="search_town">поиск  города</string>
     <string name="notFound">Город не найден</string>
+    <string name="config">Настройки</string>
+    <string name="castwind">Единица измерения\n ветра</string>
+    <string name="selectConfiguration">Выберите настройки</string>
+    <string name="casttemp">Единица измерения\n температуры</string>
+    <string name="back">верн-\nуться</string>
 
     <string-array name="towns">
         <item>Ангола  Луанда</item>
@@ -96,5 +102,6 @@
         <item>Япония	Нагоя</item>
         <item>Япония	Фукуока</item>
     </string-array>
+
 
 </resources>
