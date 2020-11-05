@@ -1,11 +1,116 @@
 <resources>
-    <string name="app_name" translatable="false">Weather forecaster</string>
-    <string name="yesterday" translatable="false">Yesterday</string>
-    <string name="tomorrow" translatable="false">Tomorrow</string>
-    <string name="weatherpicture" translatable="false">weather picture</string>
-    <string name="town" translatable="false">Moscow</string>
-    <string name="state" translatable="false">Storm</string>
+    <string name="app_name">Weather forecaster</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="weatherpicture">weather picture</string>
+    <string name="town">Russia Moscow</string>
+    <string name="state">Storm</string>
     <string name="direction">direction</string>
     <string name="picturepoint">picturepoint</string>
     <string name="WindLabel">Wind:</string>
+    <string name="windmes1">m/s</string>
+    <string name="windmes2">km/h</string>
+    <string name="tempmes1" translatable="false">°C</string>
+    <string name="tempmes2" translatable="false">K</string>
+    <string name="search">type town</string>
+    <string name="search_town">search town</string>
+    <string name="notFound">Town is not found</string>
+    <string name="config">configuration</string>
+    <string name="castwind">Wind unit</string>
+    <string name="casttemp">Temperature unit</string>
+    <string name="selectConfiguration">Select configuration</string>
+
+    <string-array name="towns">
+        <item>Angola Luanda </item>
+        <item>Argentina Buenos Aires</item>
+        <item>Bangladesh Dhaka </item>
+        <item>Brazil Sao Paulo </item>
+        <item>Brazil Rio de Janeiro </item>
+        <item>Brazil Belo Horizonte </item>
+        <item>UK London </item>
+        <item>Vietnam Ho Chi Minh City </item>
+        <item>DR Congo Kinshasa </item>
+        <item>Egypt Cairo </item>
+        <item>Egypt Alexandria </item>
+        <item>India Delhi </item>
+        <item>India Mumbai </item>
+        <item>India Kolkata </item>
+        <item>India Bangalore </item>
+        <item>India Chennai </item>
+        <item>India Hyderabad </item>
+        <item>India Ahmedabad </item>
+        <item>India Surat </item>
+        <item>Indonesia Jakarta </item>
+        <item>Iraq Baghdad </item>
+        <item>Iran Tehran </item>
+        <item>Spain Madrid </item>
+        <item>Spain Barcelona </item>
+        <item>Canada Toronto </item>
+        <item>China Shanghai </item>
+        <item>China Beijing </item>
+        <item>China Chongqing </item>
+        <item>China Tianjin </item>
+        <item>China Guangzhou </item>
+        <item>China Shenzhen </item>
+        <item>China Chengdu </item>
+        <item>China Nanjing </item>
+        <item>China Wuhan </item>
+        <item>China Xi\'an </item>
+        <item>China Hong Kong </item>
+        <item>China Dongguan </item>
+        <item>China Hangzhou </item>
+        <item>China Foshan </item>
+        <item>China Shenyang </item>
+        <item>China Suzhou </item>
+        <item>China Harbin </item>
+        <item>China Qingdao </item>
+        <item>China Dalian </item>
+        <item>China Jinan </item>
+        <item>Colombia Bogota </item>
+        <item>Malaysia Kuala Lumpur </item>
+        <item>Mexico Mexico City </item>
+        <item>Mexico Guadalajara </item>
+        <item>Myanmar Yangon </item>
+        <item>Nigeria Lagos </item>
+        <item>Pakistan Karachi </item>
+        <item>Pakistan Lahore </item>
+        <item>Peru Lima </item>
+        <item>Russia Moscow </item>
+        <item>Russia Saint Petersburg </item>
+        <item>Saudi Arabia Riyadh </item>
+        <item>Singapore Singapore </item>
+        <item>Sudan Khartoum </item>
+        <item>USA New York </item>
+        <item>USA Los Angeles </item>
+        <item>USA Chicago </item>
+        <item>USA Houston </item>
+        <item>USA Dallas </item>
+        <item>USA Miami </item>
+        <item>USA Philadelphia </item>
+        <item>USA Atlanta </item>
+        <item>USA Washington </item>
+        <item>Thailand Bangkok </item>
+        <item>Tanzania Dar es Salaam </item>
+        <item>Turkey Istanbul </item>
+        <item>Philippines Manila </item>
+        <item>France Paris </item>
+        <item>Chile Santiago </item>
+        <item>South Africa Johannesburg </item>
+        <item>South Korea Seoul </item>
+        <item>Japan Tokyo </item>
+        <item>Japan Osaka </item>
+        <item>Japan Nagoya </item>
+        <item>Japan Fukuoka </item>
+    </string-array>
+
+    <string name="onCreate" translatable="false">Создание активити</string>
+    <string name="onStart" translatable="false">Запуск активити</string>
+    <string name="onPause" translatable="false">Пауза активити</string>
+    <string name="onResume" translatable="false">Возобновление активити</string>
+    <string name="onStop" translatable="false">Остановка активити</string>
+    <string name="onRestart" translatable="false">Повторный запуск активити</string>
+    <string name="onDestroy" translatable="false">Разрушение активити</string>
+    <string name="onRestoreInstanceState" translatable="false">Восстановление данных</string>
+    <string name="onSaveInstanceState" translatable="false">Запись данных</string>
+    <string name="back">back</string>
 </resources>
