@@ -7,7 +7,7 @@ public class ApplicationClass extends Application {
 
     private static ApplicationClass INSTANCE;
 
-    private String town;
+    private TownClass town;
     private boolean windmes;
     private boolean tempmes;
     private final String LOGTAG = "ActivityState";
@@ -20,7 +20,7 @@ public class ApplicationClass extends Application {
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
-        town = getResources().getString(R.string.town);
+        town = new TownClass(getResources().getString(R.string.Moscow), getResources().getString(R.string.MoscowPoint));
         windmes = true;
         tempmes = true;
     }
@@ -29,11 +29,11 @@ public class ApplicationClass extends Application {
         return LOGTAG;
     }
 
-    public String getTown() {
+    public TownClass getTown() {
         return town;
     }
 
-    public void setTown(String town) {
+    public void setTown(TownClass town) {
         this.town = town;
     }
 

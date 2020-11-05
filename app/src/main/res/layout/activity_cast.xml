@@ -13,10 +13,10 @@
         android:layout_height="45dp"
         android:background="@drawable/button"
         android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="5"
+        android:shadowRadius="@dimen/shadow"
         android:text="@string/back"
         android:textColor="@color/colorPrimary"
-        android:textSize="10sp"
+        android:textSize="@dimen/button_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,10 +35,9 @@
         android:id="@+id/TextViewCastWind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="3dp"
         android:text="@string/castwind"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textSize="@dimen/middle_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/radioGroup1" />
 
@@ -55,25 +54,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:padding="3dp"
-            android:text="@string/windmes1" />
+            android:text="@string/windmes1"
+            android:textSize="@dimen/middle_text" />
 
         <RadioButton
             android:id="@+id/radioButtonKH"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="@string/windmes2" />
+            android:text="@string/windmes2"
+            android:textSize="@dimen/middle_text" />
     </RadioGroup>
 
     <TextView
         android:id="@+id/TextViewCastTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="3dp"
         android:text="@string/casttemp"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textSize="@dimen/middle_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextViewCastWind" />
 
@@ -89,14 +87,14 @@
             android:id="@+id/radioButtonC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="@string/tempmes1" />
+            android:text="@string/tempmes1"
+            android:textSize="@dimen/middle_text" />
 
         <RadioButton
             android:id="@+id/radioButtonK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="@string/tempmes2" />
+            android:text="@string/tempmes2"
+            android:textSize="@dimen/middle_text" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
