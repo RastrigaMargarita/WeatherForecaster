@@ -1,6 +1,7 @@
 package com.margretcraft.weatherforecaster;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton imageButtonTown;
     private ImageButton imageButtonConf;
     private ApplicationClass consts;
+    private String[] listTownPoint;
 
 
     @Override
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         imageButtonTown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeTown();
+                goWebSite();
             }
         });
         imageButtonConf = findViewById(R.id.buttonCast);
@@ -142,20 +144,25 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
         SimpleDateFormat sdfOneDay = new SimpleDateFormat("d");
 
-        textViewTown.setText(consts.getTown().replaceFirst(" ", "\n"));
+        textViewTown.setText(consts.getTown().getName().replaceFirst(" ", "\n"));
         textViewData.setText(sdf.format(showDay));
         textViewTemperature.setText("" + temperature + "°С");
+        StringBuilder sb = new StringBuilder();
         if (consts.isTempmes()) {
-            textViewMinMax.setText(String.format("%d" + getResources().getString(R.string.tempmes1) + "-%d" + getResources().getString(R.string.tempmes1), (temperature - 3), (temperature + 5)));
+            sb.append("%d").append(getResources().getString(R.string.tempmes1)).append("-%d").append(getResources().getString(R.string.tempmes1));
+            textViewMinMax.setText(String.format(sb.toString(), (temperature - 3), (temperature + 5)));
         } else {
-            textViewMinMax.setText(String.format("%d" + getResources().getString(R.string.tempmes2) + "-%d" + getResources().getString(R.string.tempmes2), (temperature - 3) + getResources().getInteger(R.integer.transferT), (temperature + 5) + getResources().getInteger(R.integer.transferT)));
+            sb.append("%d").append(getResources().getString(R.string.tempmes2)).append("-%d").append(getResources().getString(R.string.tempmes2));
+            textViewMinMax.setText(String.format(sb.toString(), (temperature - 3) + getResources().getInteger(R.integer.transferT), (temperature + 5) + getResources().getInteger(R.integer.transferT)));
         }
         textViewState.setText(R.string.state);
+        sb.delete(0, sb.length());
         if (consts.isWindmes()) {
-            textViewWind.setText(String.format("%d-%d " + getResources().getString(R.string.windmes1), windSpeedmin, windSpeedmax));
+            textViewWind.setText(String.format(sb.append("%d-%d ").append(getResources().getString(R.string.windmes1)).toString(), windSpeedmin, windSpeedmax));
         } else {
-            textViewWind.setText(String.format("%.1f-%.1f\n" + getResources().getString(R.string.windmes2), windSpeedmin * 0.10 * getResources().getInteger(R.integer.transferW), windSpeedmax * 0.10 * getResources().getInteger(R.integer.transferW)));
+            textViewWind.setText(String.format(sb.append("%.1f-%.1f\n").append(getResources().getString(R.string.windmes2)).toString(), windSpeedmin * 0.10 * getResources().getInteger(R.integer.transferW), windSpeedmax * 0.10 * getResources().getInteger(R.integer.transferW)));
         }
+        sb.delete(0, sb.length());
         buttonleft.setText(sdfOneDay.format(showDayMinus));
         buttonright.setText(sdfOneDay.format(showDayPlus));
 
@@ -169,12 +176,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        setValues();
-
+           setValues();
     }
 
     public void changeConf() {
         Intent intent = new Intent(MainActivity.this, CastActivity.class);
         startActivityForResult(intent, 2);
     }
+
+    private void goWebSite() {
+        ApplicationClass.getInstance().getTown();
+        StringBuilder sb = new StringBuilder();
+        sb.append(getString(R.string.map_upl)).append(ApplicationClass.getInstance().getTown().getPoint()).append(getString(R.string.map_size)).append(getString(R.string.map_pres));
+        Uri uri = Uri.parse(sb.toString());
+
+        Intent browser = new Intent(Intent.ACTION_VIEW, uri);
+        Intent shooser = Intent.createChooser(browser, getString(R.string.Choose_app));
+        if (browser.resolveActivity(getPackageManager()) != null) {
+            startActivity(shooser);
+        }
+
+    }
+
 }

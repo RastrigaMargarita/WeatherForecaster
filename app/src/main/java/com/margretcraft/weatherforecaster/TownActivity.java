@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class TownActivity extends AppCompatActivity {
     private ArrayAdapter arrayAdapter;
     private String[] listTown;
+    private String[] listTownPoint;
     private ListView listViewTown;
     private TextView textViewTown;
     private ImageButton buttonSearch;
@@ -27,15 +28,16 @@ public class TownActivity extends AppCompatActivity {
         setContentView(R.layout.activity_town);
         listViewTown = findViewById(R.id.ListViewTown);
         listTown = getResources().getStringArray(R.array.towns);
+        listTownPoint = getResources().getStringArray(R.array.points);
+
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listTown);
 
         listViewTown.setAdapter(arrayAdapter);
         listViewTown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                ApplicationClass.getInstance().setTown(listTown[position]);
                 Intent answer = new Intent();
+                ApplicationClass.getInstance().setTown(new TownClass(listTown[position], listTownPoint[position]));
                 setResult(RESULT_OK, answer);
                 finish();
             }
