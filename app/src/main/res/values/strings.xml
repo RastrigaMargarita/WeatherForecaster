@@ -8,7 +8,7 @@
     <string name="state">Storm</string>
     <string name="direction">direction</string>
     <string name="picturepoint">picturepoint</string>
-    <string name="WindLabel">Wind:</string>
+    <string name="windLabel">Wind:</string>
     <string name="windmes1">m/s</string>
     <string name="windmes2">km/h</string>
     <string name="tempmes1" translatable="false">°C</string>
@@ -21,9 +21,9 @@
     <string name="casttemp">Temperature unit</string>
     <string name="selectConfiguration">Select configuration</string>
     <string name="map_upl" translatable="false">"https://static-maps.yandex.ru/1.x/?ll="</string>
-    <string name = "map_size" translatable="false">"&amp;size=450,450&amp;"</string>
-    <string name = "map_pres" translatable="false">"&amp;z=10&amp;l=sat,skl"</string>
-
+    <string name="map_size" translatable="false">"&amp;size=450,450&amp;"</string>
+    <string name="map_pres" translatable="false">"&amp;z=10&amp;l=sat,skl"</string>
+    <string name="choose_app">Choose application</string>
 
     <string-array name="towns">
         <item>Angola Luanda </item>
@@ -115,5 +115,5 @@
     <string name="onRestoreInstanceState" translatable="false">Восстановление данных</string>
     <string name="onSaveInstanceState" translatable="false">Запись данных</string>
     <string name="back">back</string>
-    <string name="Choose_app">Чем открываем карту?</string>
+
 </resources>

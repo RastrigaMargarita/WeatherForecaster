@@ -7,131 +7,6 @@
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/TextViewTown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="sans-serif-black"
-        android:shadowRadius="@dimen/shadow"
-        android:textAlignment="center"
-        android:textColor="@color/mediumViolet"
-        android:textSize="@dimen/small_text"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageViewTown"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/small_padding"
-        android:clickable="true"
-        android:contentDescription="@string/picturepoint"
-        app:layout_constraintStart_toEndOf="@+id/TextViewTown"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/point"
-        android:focusable="true" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/weatherpicture"
-        android:scaleType="center"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/storm" />
-
-    <TextView
-        android:id="@+id/textViewTemperature"
-        android:layout_width="@dimen/size110"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/middle_padding"
-        android:layout_marginTop="@dimen/small_padding"
-        android:fontFamily="sans-serif-black"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/large_text"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewTown" />
-
-    <TextView
-        android:id="@+id/textViewMinMax"
-        android:layout_width="@dimen/size150"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/middle_padding"
-
-        android:fontFamily="sans-serif-black"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/middle_text"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature" />
-
-    <TextView
-        android:id="@+id/textViewState"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_padding"
-        android:fontFamily="sans-serif-black"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/large_text"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMinMax" />
-
-    <TextView
-        android:id="@+id/textViewData"
-        android:layout_width="@dimen/size110"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/middle_padding"
-        android:layout_marginEnd="@dimen/large_padding"
-        android:fontFamily="sans-serif-black"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:textAlignment="viewEnd"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/middle_text"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewTown" />
-
-    <TextView
-        android:id="@+id/textViewWind"
-        android:layout_width="@dimen/size150"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/middle_padding"
-        android:layout_marginEnd="@dimen/middle_padding"
-        android:fontFamily="sans-serif-black"
-        android:textAlignment="viewEnd"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/middle_text"
-        app:layout_constraintEnd_toEndOf="@+id/textViewState"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="@dimen/size200"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_padding"
-        android:layout_marginEnd="@dimen/middle_padding"
-        android:text="@string/WindLabel"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="@+id/textViewState"
-        app:layout_constraintTop_toBottomOf="@+id/textViewState" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="@dimen/small_button_size"
-        android:layout_height="@dimen/small_button_size"
-        android:contentDescription="@string/direction"
-        app:layout_constraintEnd_toStartOf="@+id/textViewWind"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/w1" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="@dimen/size80"
@@ -139,10 +14,9 @@
         android:background="@drawable/button"
         android:shadowColor="@color/colorPrimaryDark"
         android:shadowRadius="@dimen/shadow"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/darkViolet"
         android:textSize="@dimen/middle_text"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/textViewState"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -154,18 +28,29 @@
         android:shadowColor="@color/colorPrimaryDark"
         android:shadowRadius="@dimen/shadow"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/darkViolet"
         android:textSize="@dimen/middle_text"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/buttonCast"
+    <FrameLayout
+        android:id="@+id/fragmentMainPlace"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fragmentPlace"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/fragmentPlace"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/cast"
-        android:contentDescription="@string/config"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button2"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,14 +30,14 @@ public class TownActivity extends AppCompatActivity {
         listTown = getResources().getStringArray(R.array.towns);
         listTownPoint = getResources().getStringArray(R.array.points);
 
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listTown);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listTown);
 
         listViewTown.setAdapter(arrayAdapter);
         listViewTown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent answer = new Intent();
-                ApplicationClass.getInstance().setTown(new TownClass(listTown[position], listTownPoint[position]));
+                answer.putExtra("town", new TownClass(listTown[position], listTownPoint[position]));
                 setResult(RESULT_OK, answer);
                 finish();
             }
@@ -52,9 +52,9 @@ public class TownActivity extends AppCompatActivity {
                 for (int i = 0; i < listTown.length; i++) {
                     boolean findtown = false;
                     if (listTown[i].toLowerCase().contains(searchingTown)) {
+                        findtown = true;
                         listViewTown.smoothScrollToPosition(i, 0);
                         listViewTown.setSelection(i);
-                        findtown = true;
                         return;
                     }
                     if (!findtown) {
