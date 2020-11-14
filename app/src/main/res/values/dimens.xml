@@ -10,8 +10,8 @@
     <dimen name="large_padding">24dp</dimen>
     <dimen name="button_text">10sp</dimen>
     <dimen name="small_text">14sp</dimen>
-    <dimen name="middle_text">24sp</dimen>
-    <dimen name="large_text">36sp</dimen>
+    <dimen name="middle_text">20sp</dimen>
+    <dimen name="large_text">30sp</dimen>
     <dimen name="small_button_size">45dp</dimen>
     <dimen name="size110">110dp</dimen>
     <dimen name="size150">150dp</dimen>
