@@ -100,7 +100,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/middle_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewTown" />
+        app:layout_constraintTop_toTopOf="@+id/textViewTemperature" />
 
     <TextView
         android:id="@+id/textViewWind"

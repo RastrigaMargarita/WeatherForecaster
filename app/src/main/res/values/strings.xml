@@ -105,15 +105,47 @@
         <item>139.6917064,35.6894875</item>
     </string-array>
 
-    <string name="onCreate" translatable="false">Создание активити</string>
-    <string name="onStart" translatable="false">Запуск активити</string>
-    <string name="onPause" translatable="false">Пауза активити</string>
-    <string name="onResume" translatable="false">Возобновление активити</string>
-    <string name="onStop" translatable="false">Остановка активити</string>
-    <string name="onRestart" translatable="false">Повторный запуск активити</string>
-    <string name="onDestroy" translatable="false">Разрушение активити</string>
-    <string name="onRestoreInstanceState" translatable="false">Восстановление данных</string>
-    <string name="onSaveInstanceState" translatable="false">Запись данных</string>
+    <string-array name="zones">
+        <item>UTC+1</item>
+        <item>UTC-3</item>
+        <item>UTC+6</item>
+        <item>UTC-3</item>
+        <item>UTC-6</item>
+        <item>UTC+7</item>
+        <item>UTC+1</item>
+        <item>UTC+2</item>
+        <item>UTC+5:30</item>
+        <item>UTC+7</item>
+        <item>UTC+3</item>
+        <item>UTC+3:30</item>
+        <item>UTC+1</item>
+        <item>UTC-5</item>
+        <item>UTC+8</item>
+        <item>UTC-5</item>
+        <item>UTC+8</item>
+        <item>UTC-6</item>
+        <item>UTC+6:30</item>
+        <item>UTC+1</item>
+        <item>UTC+5</item>
+        <item>UTC-5</item>
+        <item>UTC+3</item>
+        <item>UTC+3</item>
+        <item>UTC+3</item>
+        <item>UTC+8</item>
+        <item>UTC+2</item>
+        <item>UTC-5</item>
+        <item>UTC+7</item>
+        <item>UTC+3</item>
+        <item>UTC+3</item>
+        <item>UTC+8</item>
+        <item>UTC+1</item>
+        <item>UTC-3</item>
+        <item>UTC+2</item>
+        <item>UTC+9</item>
+        <item>UTC+9</item>
+    </string-array>
+
+
     <string name="back">back</string>
 
 </resources>

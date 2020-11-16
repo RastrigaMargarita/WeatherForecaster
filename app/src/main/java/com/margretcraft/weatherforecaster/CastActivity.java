@@ -21,6 +21,8 @@ public class CastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cast);
 
+        getLifecycle().addObserver(new ActivityObserver());
+
         radioButtonMS = findViewById(R.id.radioButtonMS);
         radioButtonKH = findViewById(R.id.radioButtonKH);
         radioButtonC = findViewById(R.id.radioButtonC);

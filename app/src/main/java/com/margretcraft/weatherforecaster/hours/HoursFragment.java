@@ -28,6 +28,7 @@ public class HoursFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mes = ((MainActivity) getActivity()).isTempmes() ? getString(R.string.tempmes1) : getString(R.string.tempmes2);
         RecyclerView recyclerViewHours = getActivity().findViewById(R.id.recyclerViewHours);
+        recyclerViewHours.setHasFixedSize(true);
         recyclerViewHours.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewHours.setAdapter(new HoursAdapter(getContext(), mes));
     }

@@ -40,8 +40,8 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.HoursHolder>
 
     @Override
     public void onBindViewHolder(@NonNull HoursHolder holder, int position) {
-        holder.textViewhour.setText(hours[position]);
-        holder.textViewTemp.setText(String.format("   %d"+mes, temps[position]));
+        holder.setData(hours[position],
+        String.format("   %d"+mes, temps[position]));
     }
 
     @Override
@@ -57,6 +57,11 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursAdapter.HoursHolder>
             super(itemView);
             textViewhour = itemView.findViewById(R.id.textViewhour);
             textViewTemp = itemView.findViewById(R.id.textViewTemp);
+        }
+
+        public void setData(String hour, String format) {
+            textViewhour.setText(hour);
+            textViewTemp.setText(format);
         }
     }
 }
