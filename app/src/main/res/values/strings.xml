@@ -146,6 +146,9 @@
     </string-array>
 
 
-    <string name="back">back</string>
+    <string name="OK">OK</string>
+    <string name="ColorTheme">Цветовая тема</string>
+    <string name="Violet">Фиолетовая</string>
+    <string name="Green">Зеленая</string>
 
 </resources>

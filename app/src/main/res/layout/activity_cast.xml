@@ -4,21 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
     tools:context="com.margretcraft.weatherforecaster.towns.TownActivity">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonBack"
-        android:layout_width="40dp"
-        android:layout_height="45dp"
-        android:background="@drawable/button"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="@dimen/shadow"
-        android:text="@string/back"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/button_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/OK"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -27,7 +23,7 @@
         android:contentDescription="@string/selectConfiguration"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonBack"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sky" />
 
@@ -36,33 +32,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/castwind"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/middle_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/radioGroup1" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <RadioGroup
         android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/TextViewCastWind"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewCastWind">
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonMS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite"
             android:checked="false"
-            android:text="@string/windmes1"
-            android:textSize="@dimen/middle_text" />
+            android:text="@string/windmes1" />
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonKH"
+            style="@android:style/Widget.Material.Light.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/windmes2"
-            android:textSize="@dimen/middle_text" />
+            android:text="@string/windmes2" />
+
     </RadioGroup>
 
     <TextView
@@ -70,31 +66,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/casttemp"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/middle_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewCastWind" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup1" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/TextViewCastTemp"
-        app:layout_constraintTop_toBottomOf="@+id/TextViewCastWind">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewCastTemp">
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tempmes1"
-            android:textSize="@dimen/middle_text" />
+            android:text="@string/tempmes1" />
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tempmes2"
-            android:textSize="@dimen/middle_text" />
+            android:text="@string/tempmes2" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/TextViewCastTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ColorTheme"
+        android:textSize="@dimen/middle_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextViewCastTheme">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radioButtonV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Violet" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radioButtonG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Green" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

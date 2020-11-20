@@ -9,13 +9,13 @@
 
     <TextView
         android:id="@+id/textViewState"
+        style="@style/AppTheme.BlueText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_padding"
         android:layout_marginEnd="@dimen/small_padding"
         android:fontFamily="sans-serif-black"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/large_text"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,30 +27,28 @@
         android:id="@+id/TextViewTown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="sans-serif-black"
+        android:padding="@dimen/middle_padding"
         android:textAlignment="center"
-        android:textColor="@color/mediumViolet"
         android:textSize="@dimen/small_text"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTemperature"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/imageViewTown"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/point"
         android:clickable="true"
         android:contentDescription="@string/picturepoint"
         android:focusable="true"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTemperature"
-        app:layout_constraintStart_toEndOf="@+id/TextViewTown" />
+        app:icon="@drawable/point"
+        app:layout_constraintStart_toEndOf="@+id/TextViewTown"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -71,7 +69,6 @@
         android:layout_marginStart="@dimen/small_padding"
         android:layout_marginBottom="@dimen/small_padding"
         android:fontFamily="sans-serif-black"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/large_text"
         app:layout_constraintBottom_toTopOf="@+id/textViewMinMax"
         app:layout_constraintStart_toStartOf="parent" />
@@ -81,10 +78,8 @@
         android:layout_width="@dimen/size150"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_padding"
-
         android:layout_marginBottom="@dimen/small_padding"
         android:fontFamily="sans-serif-black"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/small_text"
         app:layout_constraintBottom_toTopOf="@+id/textViewState"
         app:layout_constraintStart_toStartOf="parent" />
@@ -95,9 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/small_padding"
         android:fontFamily="sans-serif-black"
-        android:shadowColor="@color/colorPrimaryDark"
         android:textAlignment="viewEnd"
-        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/middle_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewTemperature" />
@@ -109,7 +102,6 @@
         android:layout_marginEnd="@dimen/small_padding"
         android:fontFamily="sans-serif-black"
         android:textAlignment="viewEnd"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/small_text"
         app:layout_constraintEnd_toEndOf="@+id/textViewState"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -121,7 +113,6 @@
         android:layout_marginTop="@dimen/middle_padding"
         android:fontFamily="sans-serif-light"
         android:text="@string/windLabel"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/middle_text"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/textViewState" />
@@ -137,21 +128,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewState"
         app:srcCompat="@drawable/w1" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_padding"
         android:layout_marginBottom="@dimen/small_padding"
-        android:background="@drawable/cast"
+        app:icon="@drawable/cast"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/Barrier"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:barrierDirection="left"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="10%" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,19 @@
 package com.margretcraft.weatherforecaster;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.margretcraft.weatherforecaster.hours.HoursFragment;
+import com.margretcraft.weatherforecaster.hours.DaysFragment;
 import com.margretcraft.weatherforecaster.towns.TownActivity;
 
 import java.text.SimpleDateFormat;
@@ -22,15 +22,14 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonleft;
-    private Button buttonright;
-    private ImageButton buttonTiming;
-
+    String[] days;
+    private Button buttonTiming;
+    private String AppName = ApplicationClass.getInstance().getPackageName();
     private TownClass currentTown;
     private boolean windmes;
     private boolean tempmes;
 
-    private HoursFragment hoursFragment;
+    private DaysFragment daysFragment;
     private MainFragment mainFragment;
 
     private FragmentTransaction fragmentTransaction;
@@ -39,11 +38,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLifecycle().addObserver(new ActivityObserver());
-
+        SharedPreferences sharedPref = getSharedPreferences(AppName, MODE_PRIVATE);
+        if (sharedPref.getBoolean("theme", true)) {
+            setTheme(R.style.AppTheme);
+        } else {
+            setTheme(R.style.AppThemeGreen);
+        }
         setContentView(R.layout.activity_main);
 
-        buttonleft = findViewById(R.id.button);
-        buttonright = findViewById(R.id.button2);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             buttonTiming = findViewById(R.id.buttonTiming);
             buttonTiming.setOnClickListener(new View.OnClickListener() {
@@ -56,31 +58,38 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                     } else {
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.fragmentPlace, hoursFragment, "hours");
+                        fragmentTransaction.replace(R.id.fragmentPlace, daysFragment, "hours");
                         fragmentTransaction.commit();
                     }
 
                 }
             });
         }
+
+
+
         if (savedInstanceState == null) {
-            //Hardcode временный (sharedpreferences? SQLite?)
-            currentTown = new TownClass(getString(R.string.Moscow), getString(R.string.MoscowPoint), "UTF+3");
-            windmes = true;
-            tempmes = true;
+            currentTown = new TownClass(sharedPref.getString("townName", getString(R.string.Moscow)),
+                    sharedPref.getString("townPoint", getString(R.string.MoscowPoint)),
+                    sharedPref.getString("townZone", "UTF+3"));
+            windmes = sharedPref.getBoolean("wind", true);
+            tempmes = sharedPref.getBoolean("temp", true);
+
         } else {
             currentTown = savedInstanceState.getParcelable("Town");
             windmes = savedInstanceState.getBoolean("wind");
             tempmes = savedInstanceState.getBoolean("temp");
+
         }
 
         Date showDay = new Date();
-        Date showDayPlus = new Date(showDay.getTime() + 24 * 60 * 60 * 1000);
-        Date showDayMinus = new Date(showDay.getTime() - 24 * 60 * 60 * 1000);
 
         SimpleDateFormat sdfOneDay = new SimpleDateFormat("d", Locale.getDefault());
-        buttonleft.setText(sdfOneDay.format(showDayMinus));
-        buttonright.setText(sdfOneDay.format(showDayPlus));
+        days = new String[5];
+
+        for (int i = 0; i < 5; i++) {
+            days[i] = "" + sdfOneDay.format(new Date(showDay.getTime() + i * 24 * 60 * 60 * 1000));
+        }
 
         setFragments();
     }
@@ -96,7 +105,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setFragments() {
-        hoursFragment = new HoursFragment();
+        daysFragment = new DaysFragment();
+        Bundle bd = new Bundle();
+        bd.putStringArray("days", days);
+        daysFragment.setArguments(bd);
         mainFragment = new MainFragment();
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -106,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragmentMainPlace, mainFragment);
-            fragmentTransaction.replace(R.id.fragmentPlace, hoursFragment);
+            fragmentTransaction.replace(R.id.fragmentPlace, daysFragment);
             fragmentTransaction.commit();
         }
     }
@@ -118,25 +130,33 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeConf() {
         Intent intent = new Intent(getApplicationContext(), CastActivity.class);
-        intent.putExtra("windmes", windmes);
-        intent.putExtra("tempmes", tempmes);
-        startActivityForResult(intent, 2);
+        startActivity(intent);
+        this.finish();
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (data != null) {
+            SharedPreferences sharedPref = getSharedPreferences(AppName, MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
             switch (requestCode) {
+
                 case 1:
                     currentTown = data.getParcelableExtra("town");
+                    editor.putString("townName", currentTown.getName());
+                    editor.putString("townPoint", currentTown.getPoint());
+                    editor.putString("townZone", currentTown.getTimeZone());
                     break;
-                case 2:
-                    windmes = data.getBooleanExtra("windmes", true);
-                    tempmes = data.getBooleanExtra("tempmes", true);
-                    break;
-
-            }
+//                case 2:
+//                    windmes = data.getBooleanExtra("windmes", true);
+//                    tempmes = data.getBooleanExtra("tempmes", true);
+//                    editor.putBoolean("windmes", windmes);
+//                    editor.putBoolean("tempmes", tempmes);
+//                    break;
+           }
+            editor.apply();
         }
         setFragments();
     }

@@ -16,7 +16,8 @@ public class ActivityObserver implements LifecycleObserver {
     void onAny(LifecycleOwner source, Lifecycle.Event event) {
         if (isDebug) {
             Log.i(source.getClass().getSimpleName(), event.toString());
-            Toast.makeText(ApplicationClass.getInstance().getApplicationContext(), source.getClass().getSimpleName() + " " + event, Toast.LENGTH_LONG).show();
+            Toast.makeText(ApplicationClass.getInstance().getApplicationContext(),
+                    source.getClass().getSimpleName() + " " + event, Toast.LENGTH_LONG).show();
         }
     }
 }

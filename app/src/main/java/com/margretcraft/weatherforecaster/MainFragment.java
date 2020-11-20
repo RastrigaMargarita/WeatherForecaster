@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -20,8 +21,8 @@ public class MainFragment extends Fragment {
     private TextView textViewTemperature;
     private TextView textViewTown;
     private TextView textViewWind;
-    private ImageButton imageButtonTown;
-    private ImageButton imageButtonConf;
+    private Button imageButtonTown;
+    private Button imageButtonConf;
 
 
     @Override
@@ -71,8 +72,6 @@ public class MainFragment extends Fragment {
         int windSpeedmax = 7;
 
         Date showDay = new Date();
-        Date showDayPlus = new Date(showDay.getTime() + 24 * 60 * 60 * 1000);
-        Date showDayMinus = new Date(showDay.getTime() - 24 * 60 * 60 * 1000);
 
         SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
         SimpleDateFormat sdfOneDay = new SimpleDateFormat("d");

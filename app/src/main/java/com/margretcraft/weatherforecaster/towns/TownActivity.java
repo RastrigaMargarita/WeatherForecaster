@@ -1,6 +1,7 @@
 package com.margretcraft.weatherforecaster.towns;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.margretcraft.weatherforecaster.ApplicationClass;
 import com.margretcraft.weatherforecaster.R;
 import com.margretcraft.weatherforecaster.TownClass;
 
@@ -25,12 +28,18 @@ public class TownActivity extends AppCompatActivity {
     private ArrayList<TownClass> listTownClass;
     private RecyclerView listViewTown;
     private TextView textViewTown;
-    private ImageButton buttonSearch;
-    private Button buttonback;
+    private Button buttonSearch;
+    private String AppName = ApplicationClass.getInstance().getPackageName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPref = getSharedPreferences(AppName, MODE_PRIVATE);
+        if (sharedPref.getBoolean("theme", true)) {
+            setTheme(R.style.AppTheme);
+        } else {
+            setTheme(R.style.AppThemeGreen);
+        }
         setContentView(R.layout.activity_town);
         listViewTown = findViewById(R.id.ListViewTown);
         ititTownClassList();
@@ -64,18 +73,20 @@ public class TownActivity extends AppCompatActivity {
                     }
                 }
                 if (!findtown) {
-                    showToast();
+                    Snackbar.make(v, "Город не найден!", Snackbar.LENGTH_LONG)
+                            .setAction("ОК", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                   textViewTown.setText("");
+                                }
+                            })
+                            .show();
                 }
             }
         });
 
-        buttonback = findViewById(R.id.buttonBack2);
-        buttonback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
+
     }
 
     private void ititTownClassList() {
@@ -88,7 +99,4 @@ public class TownActivity extends AppCompatActivity {
         }
     }
 
-    private void showToast() {
-        Toast.makeText(this, R.string.notFound, Toast.LENGTH_LONG).show();
-    }
 }
