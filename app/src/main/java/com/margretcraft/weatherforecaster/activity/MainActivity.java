@@ -1,4 +1,4 @@
-package com.margretcraft.weatherforecaster;
+package com.margretcraft.weatherforecaster.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,14 +13,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.margretcraft.weatherforecaster.hours.DaysFragment;
-import com.margretcraft.weatherforecaster.towns.TownActivity;
+import com.margretcraft.weatherforecaster.ApplicationClass;
+import com.margretcraft.weatherforecaster.R;
+import com.margretcraft.weatherforecaster.model.ActivityObserver;
+import com.margretcraft.weatherforecaster.model.GetWeather;
+import com.margretcraft.weatherforecaster.model.TownClass;
+import com.margretcraft.weatherforecaster.model.jsonmodel.ListRequest;
+import com.margretcraft.weatherforecaster.model.jsonmodel.WeatherRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Observable;
+import java.util.Observer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Observer {
 
     String[] days;
     private Button buttonTiming;
@@ -29,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean windmes;
     private boolean tempmes;
 
-    private DaysFragment daysFragment;
+    private WeatherRequest weatherRequest;
+    private ListRequest listRequest;
     private MainFragment mainFragment;
+    private DaysFragment daysFragment;
 
     private FragmentTransaction fragmentTransaction;
 
@@ -61,12 +70,9 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.fragmentPlace, daysFragment, "hours");
                         fragmentTransaction.commit();
                     }
-
                 }
             });
         }
-
-
 
         if (savedInstanceState == null) {
             currentTown = new TownClass(sharedPref.getString("townName", getString(R.string.Moscow)),
@@ -79,21 +85,19 @@ public class MainActivity extends AppCompatActivity {
             currentTown = savedInstanceState.getParcelable("Town");
             windmes = savedInstanceState.getBoolean("wind");
             tempmes = savedInstanceState.getBoolean("temp");
-
         }
 
         Date showDay = new Date();
 
-        SimpleDateFormat sdfOneDay = new SimpleDateFormat("d", Locale.getDefault());
+        SimpleDateFormat sdfOneDay = new SimpleDateFormat("d.MM", Locale.getDefault());
         days = new String[5];
 
         for (int i = 0; i < 5; i++) {
-            days[i] = "" + sdfOneDay.format(new Date(showDay.getTime() + i * 24 * 60 * 60 * 1000));
+            days[i] = "" + sdfOneDay.format(new Date(showDay.getTime() + (i + 1) * 24 * 60 * 60 * 1000));
         }
-
         setFragments();
+        startGettingData();
     }
-
 
     @Override
     @NonNull
@@ -135,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (data != null) {
@@ -149,16 +153,11 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("townPoint", currentTown.getPoint());
                     editor.putString("townZone", currentTown.getTimeZone());
                     break;
-//                case 2:
-//                    windmes = data.getBooleanExtra("windmes", true);
-//                    tempmes = data.getBooleanExtra("tempmes", true);
-//                    editor.putBoolean("windmes", windmes);
-//                    editor.putBoolean("tempmes", tempmes);
-//                    break;
-           }
+            }
             editor.apply();
+            startGettingData();
         }
-        setFragments();
+
     }
 
     public void goWebSite() {
@@ -183,6 +182,40 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean isTempmes() {
         return tempmes;
+    }
+
+    private void startGettingData() {
+        String[] points = currentTown.getPoint().split(",");
+        GetWeather getWeather = new GetWeather(points[1].substring(0, 5), points[0].substring(0, 5));
+        getWeather.setObserver(this);
+        new Thread(getWeather).start();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg instanceof WeatherRequest) {
+            weatherRequest = (WeatherRequest) arg;
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mainFragment.setValues();
+                }
+            });
+        } else if (arg instanceof ListRequest) {
+
+            listRequest = (ListRequest) arg;
+            daysFragment.updateAdapter();
+
+        }
+    }
+
+    public WeatherRequest getWeatherRequest() {
+        return weatherRequest;
+    }
+
+    public ListRequest getListRequest() {
+        return listRequest;
     }
 
 }

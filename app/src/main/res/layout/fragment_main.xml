@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment">
+    tools:context=".activity.MainFragment">
 
 
     <TextView
@@ -104,7 +104,7 @@
         android:textAlignment="viewEnd"
         android:textSize="@dimen/small_text"
         app:layout_constraintEnd_toEndOf="@+id/textViewState"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewWind" />
 
     <TextView
         android:id="@+id/textView"
@@ -114,19 +114,18 @@
         android:fontFamily="sans-serif-light"
         android:text="@string/windLabel"
         android:textSize="@dimen/middle_text"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewWind"
         app:layout_constraintTop_toBottomOf="@+id/textViewState" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewWind"
         android:layout_width="@dimen/small_button_size"
         android:layout_height="@dimen/small_button_size"
         android:layout_marginTop="@dimen/small_padding"
         android:layout_marginEnd="@dimen/small_padding"
         android:contentDescription="@string/direction"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewState"
-        app:srcCompat="@drawable/w1" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewState" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCast"

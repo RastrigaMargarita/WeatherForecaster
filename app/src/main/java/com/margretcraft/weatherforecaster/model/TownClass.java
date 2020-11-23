@@ -1,4 +1,4 @@
-package com.margretcraft.weatherforecaster;
+package com.margretcraft.weatherforecaster.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

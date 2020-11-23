@@ -1,4 +1,4 @@
-package com.margretcraft.weatherforecaster.hours;
+package com.margretcraft.weatherforecaster.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,12 +10,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.margretcraft.weatherforecaster.MainActivity;
 import com.margretcraft.weatherforecaster.R;
+import com.margretcraft.weatherforecaster.model.DaysAdapter;
 
 public class DaysFragment extends Fragment {
 
     private String mes;
+    private RecyclerView recyclerViewHours;
+    private String[] days;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,15 +30,19 @@ public class DaysFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Bundle bd = getArguments();
-        String[] days = new String[5];
-        if (bd!=null){
-            days = bd.getStringArray("days");
-        }
+        days = bd.getStringArray("days");
+
         mes = ((MainActivity) getActivity()).isTempmes() ? getString(R.string.tempmes1) : getString(R.string.tempmes2);
-        RecyclerView recyclerViewHours = getActivity().findViewById(R.id.recyclerViewHours);
+        recyclerViewHours = getActivity().findViewById(R.id.recyclerViewHours);
         recyclerViewHours.setHasFixedSize(true);
         recyclerViewHours.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewHours.setAdapter(new DaysAdapter(getContext(), mes, days));
+        updateAdapter();
+    }
+
+    public void updateAdapter() {
+        if (((MainActivity) getActivity()).getListRequest() != null) {
+            recyclerViewHours.setAdapter(new DaysAdapter(getContext(), mes, days, ((MainActivity) getActivity()).getListRequest().getDaily()));
+        }
     }
 
 }

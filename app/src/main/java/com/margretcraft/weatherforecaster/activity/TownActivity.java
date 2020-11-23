@@ -1,13 +1,11 @@
-package com.margretcraft.weatherforecaster.towns;
+package com.margretcraft.weatherforecaster.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.Snackbar;
 import com.margretcraft.weatherforecaster.ApplicationClass;
 import com.margretcraft.weatherforecaster.R;
-import com.margretcraft.weatherforecaster.TownClass;
+import com.margretcraft.weatherforecaster.model.TownAdapter;
+import com.margretcraft.weatherforecaster.model.TownClass;
 
 import java.util.ArrayList;
 
@@ -77,16 +76,13 @@ public class TownActivity extends AppCompatActivity {
                             .setAction("ОК", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                   textViewTown.setText("");
+                                    textViewTown.setText("");
                                 }
                             })
                             .show();
                 }
             }
         });
-
-
-
     }
 
     private void ititTownClassList() {

@@ -1,4 +1,4 @@
-package com.margretcraft.weatherforecaster;
+package com.margretcraft.weatherforecaster.model;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,6 +8,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
+
+import com.margretcraft.weatherforecaster.ApplicationClass;
 
 public class ActivityObserver implements LifecycleObserver {
     private boolean isDebug = false;

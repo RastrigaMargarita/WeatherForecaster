@@ -1,4 +1,4 @@
-package com.margretcraft.weatherforecaster;
+package com.margretcraft.weatherforecaster.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.margretcraft.weatherforecaster.ApplicationClass;
+import com.margretcraft.weatherforecaster.R;
+import com.margretcraft.weatherforecaster.model.ActivityObserver;
 
 public class CastActivity extends AppCompatActivity {
     private String AppName = ApplicationClass.getInstance().getPackageName();
@@ -40,32 +44,12 @@ public class CastActivity extends AppCompatActivity {
         radioButtonV = findViewById(R.id.radioButtonV);
         radioButtonG = findViewById(R.id.radioButtonG);
 
-//        if (savedInstanceState != null) {
-//            if (savedInstanceState.getBoolean("windmes")) {
-//                radioButtonMS.setChecked(true);
-//            } else {
-//                radioButtonKH.setChecked(true);
-//            }
-//            if (savedInstanceState.getBoolean("tempmes")) {
-//                radioButtonC.setChecked(true);
-//            } else {
-//                radioButtonK.setChecked(true);
-//            }
-//            if (savedInstanceState.getBoolean("theme")) {
-//                radioButtonV.setChecked(true);
-//            } else {
-//                radioButtonG.setChecked(true);
-//            }
-//
-//        } else {
-
         radioButtonMS.setChecked(sharedPref.getBoolean("windmes", true));
         radioButtonKH.setChecked(!sharedPref.getBoolean("windmes", true));
         radioButtonC.setChecked(sharedPref.getBoolean("tempmes", true));
         radioButtonK.setChecked(!sharedPref.getBoolean("tempmes", true));
         radioButtonV.setChecked(sharedPref.getBoolean("theme", true));
         radioButtonG.setChecked(!sharedPref.getBoolean("theme", true));
-//        }
 
         buttonback = findViewById(R.id.buttonBack);
         buttonback.setOnClickListener(new View.OnClickListener() {
@@ -73,8 +57,8 @@ public class CastActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-               startActivity(intent);
-                   finish();
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -146,7 +130,6 @@ public class CastActivity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 }

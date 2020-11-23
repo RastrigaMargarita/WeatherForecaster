@@ -1,16 +1,14 @@
-package com.margretcraft.weatherforecaster.towns;
+package com.margretcraft.weatherforecaster.model;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.margretcraft.weatherforecaster.R;
-import com.margretcraft.weatherforecaster.TownClass;
 
 import java.util.ArrayList;
 
@@ -65,7 +63,6 @@ public class TownAdapter extends RecyclerView.Adapter<TownAdapter.RecordHolder> 
                     }
                 }
             });
-
         }
 
         public void setData(TownClass town) {
