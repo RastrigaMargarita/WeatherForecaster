@@ -18,8 +18,11 @@
     <string name="castwind">Единица измерения\n ветра</string>
     <string name="selectConfiguration">Выберите настройки</string>
     <string name="casttemp">Единица измерения\n температуры</string>
-    <string name="back">верн-\nуться</string>
+    <string name="OK">OK</string>
     <string name="choose_app">Чем открываем карту?</string>
+    <string name="ColorTheme">Цветовая тема</string>
+    <string name="Violet">Фиолетовая</string>
+    <string name="Green">Зеленая</string>
 
     <string-array name="towns">
         <item>Ангола  Луанда</item>

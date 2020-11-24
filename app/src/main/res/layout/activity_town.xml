@@ -4,55 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.margretcraft.weatherforecaster.TownActivity">
+    tools:context="com.margretcraft.weatherforecaster.activity.TownActivity">
 
-    <Button
-        android:id="@+id/buttonBack2"
-        android:layout_width="@dimen/small_button_size"
-        android:layout_height="@dimen/small_button_size"
-        android:background="@drawable/button"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="@dimen/shadow"
-        android:text="@string/back"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/button_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/textViewTown"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:background="@drawable/sky"
-        android:hint="@string/search"
-        android:inputType="text"
         android:padding="@dimen/small_padding"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/middle_text"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSearchTown"
-        app:layout_constraintStart_toEndOf="@+id/buttonBack2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ListView
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textViewTown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sky"
+            android:hint="@string/search"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListViewTown"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTown" />
+        app:layout_constraintTop_toBottomOf="@+id/TextInputLayout" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSearchTown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
+        android:layout_marginEnd="16dp"
         android:clickable="true"
         android:contentDescription="@string/search_town"
         android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTown"
+        app:icon="@drawable/glass"
+        app:layout_constraintBottom_toBottomOf="@+id/TextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TextInputLayout"
         app:srcCompat="@drawable/glass" />
 </androidx.constraintlayout.widget.ConstraintLayout>

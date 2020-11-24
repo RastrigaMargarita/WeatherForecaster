@@ -1,4 +1,4 @@
-package com.margretcraft.weatherforecaster;
+package com.margretcraft.weatherforecaster.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,15 +6,18 @@ import android.os.Parcelable;
 public class TownClass implements Parcelable {
     private String name;
     private String point;
+    private String timeZone;
 
-    public TownClass(String name, String point) {
+    public TownClass(String name, String point, String timeZone) {
         this.name = name;
         this.point = point;
+        this.timeZone = timeZone;
     }
 
     protected TownClass(Parcel in) {
         name = in.readString();
         point = in.readString();
+        timeZone = in.readString();
     }
 
     public static final Creator<TownClass> CREATOR = new Creator<TownClass>() {
@@ -37,6 +40,9 @@ public class TownClass implements Parcelable {
         return point;
     }
 
+    public String getTimeZone() {
+        return timeZone;
+    }
     @Override
     public int describeContents() {
         return 0;
@@ -46,5 +52,6 @@ public class TownClass implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(point);
+        dest.writeString(timeZone);
     }
 }

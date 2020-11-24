@@ -4,53 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="@dimen/size80"
-        android:layout_height="0dp"
-        android:background="@drawable/button"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="@dimen/shadow"
-        android:textColor="@color/darkViolet"
-        android:textSize="@dimen/middle_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="@dimen/size80"
-        android:layout_height="0dp"
-        android:background="@drawable/buttonr"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="@dimen/shadow"
-        android:textAlignment="center"
-        android:textColor="@color/darkViolet"
-        android:textSize="@dimen/middle_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/fragmentMainPlace"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fragmentPlace"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/fragmentPlace"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button2"
+        android:maxWidth="30dp"
 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
