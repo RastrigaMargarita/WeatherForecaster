@@ -1,6 +1,8 @@
 package com.margretcraft.weatherforecaster.model.jsonmodel;
 
 
+import androidx.lifecycle.ViewModel;
+
 public class ListRequest {
     private Daily[] daily;
 
@@ -11,6 +13,5 @@ public class ListRequest {
     public void setDaily(Daily[] daily) {
         this.daily = daily;
     }
-
 
 }

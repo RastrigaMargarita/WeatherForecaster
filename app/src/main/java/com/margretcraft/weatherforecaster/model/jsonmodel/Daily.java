@@ -11,6 +11,4 @@ public class Daily {
         this.temp = temp;
     }
 
-
-
 }

@@ -6,6 +6,15 @@ public class WeatherRequest {
     private Wind wind;
     private Clouds clouds;
     private String name;
+    private transient boolean gettingSuccess;
+
+    public boolean isGettingSuccess() {
+        return gettingSuccess;
+    }
+
+    public void setGettingSuccess(boolean gettingSuccess) {
+        this.gettingSuccess = gettingSuccess;
+    }
 
     public Weather[] getWeather() {
         return weather;

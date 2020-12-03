@@ -1,10 +1,7 @@
 package com.margretcraft.weatherforecaster.model;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.margretcraft.weatherforecaster.BuildConfig;
-import com.margretcraft.weatherforecaster.R;
 import com.margretcraft.weatherforecaster.activity.MainActivity;
 import com.margretcraft.weatherforecaster.model.jsonmodel.ListRequest;
 import com.margretcraft.weatherforecaster.model.jsonmodel.WeatherRequest;
@@ -23,17 +20,15 @@ public class GetWeather extends Observable implements Runnable {
     private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?";
     private static final String WEATHER_5_URL = "https://api.openweathermap.org/data/2.5/onecall?";
 
-    private static String TOWN_COORDINATES;
-    private Observer observer;
+    private final String TOWN_COORDINATES;
+    private final Observer observer;
 
-    public void setObserver(Observer observer) {
+    private final String lat;
+    private final String lon;
+
+    public GetWeather(Observer observer, String lat, String lon) {
+
         this.observer = observer;
-    }
-
-    private String lat;
-    private String lon;
-
-    public GetWeather(String lat, String lon) {
         this.lat = lat;
         this.lon = lon;
         this.TOWN_COORDINATES = new StringBuilder().append("lat=").append(lat).append("&lon=").append(lon).toString();
@@ -54,19 +49,30 @@ public class GetWeather extends Observable implements Runnable {
             String result = getLines(in);
 
             Gson gson = new Gson();
+
             final WeatherRequest weatherRequest = gson.fromJson(result, WeatherRequest.class);
+            weatherRequest.setGettingSuccess(true);
             in.close();
-            observer.update(this, weatherRequest);
+
+            ((MainActivity) observer).runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setDataToObserver(weatherRequest);
+                }
+            });
+
 
         } catch (Exception e) {
-            Snackbar.make(((MainActivity) observer).findViewById(R.id.buttonTiming), "Недоступны данные с сервера, попробуйте позднее.", BaseTransientBottomBar.LENGTH_LONG).show();
+
+            WeatherRequest weatherRequest = new WeatherRequest();
+            weatherRequest.setGettingSuccess(false);
+            observer.update(this, weatherRequest);
             e.printStackTrace();
         } finally {
             if (null != urlConnection) {
                 urlConnection.disconnect();
             }
         }
-
 
         sb = new StringBuilder(WEATHER_5_URL);
 
@@ -84,7 +90,14 @@ public class GetWeather extends Observable implements Runnable {
             Gson gson = new Gson();
             final ListRequest listRequest = gson.fromJson(result, ListRequest.class);
             in.close();
-            observer.update(this, listRequest);
+
+            ((MainActivity) observer).runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setDataToObserver(listRequest);
+                }
+            });
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,6 +106,10 @@ public class GetWeather extends Observable implements Runnable {
                 urlConnection.disconnect();
             }
         }
+    }
+
+    private void setDataToObserver(Object rr) {
+        observer.update(this, rr);
     }
 
     private String getLines(BufferedReader in) {

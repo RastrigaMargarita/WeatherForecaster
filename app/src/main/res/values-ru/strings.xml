@@ -23,6 +23,7 @@
     <string name="ColorTheme">Цветовая тема</string>
     <string name="Violet">Фиолетовая</string>
     <string name="Green">Зеленая</string>
+    <string name="errorGettingData">Недоступны данные с сервера, попробуйте позднее.</string>
 
     <string-array name="towns">
         <item>Ангола  Луанда</item>

@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.margretcraft.weatherforecaster.R;
 import com.margretcraft.weatherforecaster.model.DaysAdapter;
+import com.margretcraft.weatherforecaster.model.jsonmodel.ListRequest;
 
 public class DaysFragment extends Fragment {
 
@@ -23,6 +25,13 @@ public class DaysFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ((MainActivity) getActivity()).getlistRequestMLD().observe(getViewLifecycleOwner(), new Observer<ListRequest>() {
+            @Override
+            public void onChanged(@Nullable ListRequest s) {
+                assert s != null;
+                updateAdapter(s);
+            }
+        });
         return inflater.inflate(R.layout.fragment_days, container, false);
     }
 
@@ -36,12 +45,12 @@ public class DaysFragment extends Fragment {
         recyclerViewHours = getActivity().findViewById(R.id.recyclerViewHours);
         recyclerViewHours.setHasFixedSize(true);
         recyclerViewHours.setLayoutManager(new LinearLayoutManager(getContext()));
-        updateAdapter();
+
     }
 
-    public void updateAdapter() {
-        if (((MainActivity) getActivity()).getListRequest() != null) {
-            recyclerViewHours.setAdapter(new DaysAdapter(getContext(), mes, days, ((MainActivity) getActivity()).getListRequest().getDaily()));
+    public void updateAdapter(ListRequest s) {
+        if (s != null) {
+            recyclerViewHours.setAdapter(new DaysAdapter(getContext(), mes, days, s.getDaily()));
         }
     }
 

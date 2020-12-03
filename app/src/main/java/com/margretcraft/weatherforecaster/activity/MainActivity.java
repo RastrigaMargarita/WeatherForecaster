@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.MutableLiveData;
 
 import com.margretcraft.weatherforecaster.ApplicationClass;
 import com.margretcraft.weatherforecaster.R;
@@ -36,12 +37,22 @@ public class MainActivity extends AppCompatActivity implements Observer {
     private boolean windmes;
     private boolean tempmes;
 
-    private WeatherRequest weatherRequest;
-    private ListRequest listRequest;
+    private final MutableLiveData<WeatherRequest> weatherRequestMLD = new MutableLiveData<>();
+
+    private final MutableLiveData<ListRequest> listRequestMLD = new MutableLiveData<>();
+
     private MainFragment mainFragment;
     private DaysFragment daysFragment;
 
     private FragmentTransaction fragmentTransaction;
+
+    public MutableLiveData<WeatherRequest> getWeatherRequestMLD() {
+        return weatherRequestMLD;
+    }
+
+    public MutableLiveData<ListRequest> getlistRequestMLD() {
+        return listRequestMLD;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +168,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
             editor.apply();
             startGettingData();
         }
-
     }
 
     public void goWebSite() {
@@ -186,36 +196,20 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
     private void startGettingData() {
         String[] points = currentTown.getPoint().split(",");
-        GetWeather getWeather = new GetWeather(points[1].substring(0, 5), points[0].substring(0, 5));
-        getWeather.setObserver(this);
+        GetWeather getWeather = new GetWeather(this, points[1].substring(0, 5), points[0].substring(0, 5));
+
         new Thread(getWeather).start();
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Observable o, final Object arg) {
+
         if (arg instanceof WeatherRequest) {
-            weatherRequest = (WeatherRequest) arg;
+            weatherRequestMLD.setValue((WeatherRequest) arg);
 
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mainFragment.setValues();
-                }
-            });
         } else if (arg instanceof ListRequest) {
-
-            listRequest = (ListRequest) arg;
-            daysFragment.updateAdapter();
-
+            listRequestMLD.setValue((ListRequest) arg);
         }
-    }
-
-    public WeatherRequest getWeatherRequest() {
-        return weatherRequest;
-    }
-
-    public ListRequest getListRequest() {
-        return listRequest;
     }
 
 }

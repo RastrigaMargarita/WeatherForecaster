@@ -23,7 +23,6 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.HoursHolder> {
         this.mes = mes;
         this.days = days;
         this.temps = temps;
-
     }
 
     public HoursHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
